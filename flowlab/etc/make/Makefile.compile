@@ -1,0 +1,5 @@
+%.o: %.f90
+	$(f90_compiler) $(f90_flags) -c $< $(includes)
+
+%.o: %.cpp
+	$(cpp_compiler) $(cpp_flags) -c $< $(includes)

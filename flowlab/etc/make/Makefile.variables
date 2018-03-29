@@ -1,0 +1,10 @@
+SHELL:=/bin/bash
+
+empty:=
+space:=$(empty) $(empty)
+
+cpp_compiler:=g++
+f90_compiler:=gfortran
+
+cpp_mpi_compiler:=mpic++
+f90_mpi_compiler:=mpif90

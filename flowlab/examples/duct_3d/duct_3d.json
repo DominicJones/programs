@@ -1,0 +1,8 @@
+{
+  "Mesh" : { "File" : "duct_3d.msh", "Dimensions" : 3 },
+  "Material" : { "Density" : 1.2, "Viscosity" : 0.3 },
+  "Solver" : { "Iteration-Limit" : 10, "Residual-Drop" : 0.1 },
+  "Equation" : { "Velocity" : { "Relaxation" : 0.55 }, "Pressure" : { "Relaxation" : 0.15 } },
+  "Model" : { "Navier-Stokes" : { "Convection-Blending" : 0.5 } },
+  "Boundary" : { "Type" : "Inlet", "Index" : 1, "Velocity" : { "X-Direction" : 0, "Y-Direction" : 0, "Z-Direction" : 0, "Magnitude" : 1  } }
+}
