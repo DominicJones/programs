@@ -1,0 +1,22 @@
+lib$(NAME).a: $(OBJ)
+	ar ruv $@ $^
+	ranlib $@
+
+%.o: %.f90
+	$(FC) $(FFLAGS) -c $<
+
+%.o: %.f
+	$(FC) $(FFLAGS) -c $<
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $<
+
+.PHONY: clean
+clean:
+	rm -f *~ *.o
+
+.PHONY: distclean
+distclean:
+	$(MAKE) clean
+	rm -f *.mod *.a
+

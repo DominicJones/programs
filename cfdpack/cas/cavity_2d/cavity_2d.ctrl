@@ -1,0 +1,30 @@
+[Case]
+Title=2D steady laminar cavity flow, Re = 1000
+
+[Mesh]
+Format=../../etc/mshf/gmsh.fmt
+File=../../cas/cavity_2d/cavity_2d.msh
+Dimensions=2
+
+[Material Properties]
+Density=1.
+Viscoisty=0.001
+
+[Boundary Conditions]
+Wall 1=1.,0.,0.
+
+[Solver]
+Maximum Iterations=1000
+Minumum Residual Norm=0.0001
+Pressure Correction Iterations=1
+
+[Output]
+Pressure=On
+Velocity=On
+Speed=Off
+
+[Gradient]
+# Least Squares | Green Gauss
+Method=Least Squares
+# Off | Barth | Venkat
+Limiter=Off

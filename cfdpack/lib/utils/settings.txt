@@ -1,0 +1,17 @@
+# input control
+
+[Application]
+Title = Test Title
+Version = 1.0.5
+
+[Background]
+Color = 255, 127, 127, 127
+
+[Foreground]
+Color = 255, 255, 255, 255
+Text Color = 255, 0, 0, 0
+
+[Edit Menu Options]
+C&ut  Ctrl+X = 1
+&Copy  Ctrl+C = 2
+P&aste  Ctrl+V = 3
