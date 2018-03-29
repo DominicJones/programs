@@ -1,0 +1,13 @@
+====================================================
+                     gpde
+====================================================
+       General PDE solver for 2D/3D meshes
+ Used for constructing discrete adjoint N-S via AD
+----------------------------------------------------
+ Distributed under the terms of the GNU GPL license
+----------------------------------------------------
+           D. P. Jones, London, 2011
+           dominic.jones@qmul.ac.uk
+                 www.gpde.net
+====================================================
+EOH

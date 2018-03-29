@@ -1,0 +1,52 @@
+7                # number of element types
+0                # vertex starting index
+
+line,1,1         # name of element, no. of dimensions, element type
+2,2              # no. of verticies, no. of faces
+1, 0             # no. of vertices of face[i], <list of verticies [anti-clockwise]>
+1, 1
+
+triangle,2,2
+3,3
+2, 0,1
+2, 1,2
+2, 2,0
+
+quadrangle,2,3
+4,4
+2, 0,1
+2, 1,2
+2, 2,3
+2, 3,0
+
+tetrahedron,3,4
+4,4
+3, 0,3,2
+3, 0,1,3
+3, 0,2,1
+3, 1,2,3
+
+pyramid,3,7
+5,5
+3, 1,2,4
+4, 1,0,3,2
+3, 1,4,0
+3, 3,4,2
+3, 3,0,4
+
+prism,3,6
+6,5
+3, 4,5,3
+4, 4,1,2,5
+4, 4,3,0,1
+4, 2,0,3,5
+3, 2,1,0
+
+hexahedron,3,5
+8,6
+4, 4,5,6,7
+4, 4,0,1,5
+4, 4,7,3,0
+4, 2,6,5,1
+4, 2,1,0,3
+4, 2,3,7,6
