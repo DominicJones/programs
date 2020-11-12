@@ -75,18 +75,19 @@ A simple computational fluid dynamics solver
 ```
 PRIMAL:
 solve: A . x = b
+A = 0; b = 0;
 
 TANGENT:
 solve: A . x_tng = b_tng - A_tng . x
+A_tng = 0; b_tng = 0;
 
 ADJOINT:
 solve: A.trans . beta = x_adj
 b_adj += beta
 A_adj -= beta . x.trans
-x_adj -= A.trans . beta
+x_adj = 0;
 
-N.B. if the `solve' is not fully converged,
-i.e. beta != A.trans.inv . x_adj
-the last operation becomes
-x^0_adj = x_adj - A.trans . beta
+N.B. if the linear system is not fully converged,
+i.e. beta != A.trans.inv . x_adj, then
+x_adj -= A.trans . beta
 ```
