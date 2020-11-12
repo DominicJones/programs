@@ -93,8 +93,6 @@ subroutine lin_eqns_solver_rev(a_ij,a_ijb,phi,phib,rhs,rhsb, &
   call csr_transpose(a_ij,ja,ia,at_ij)
   call lin_eqns_solver(at_ij,rhsb,phib,normb,ja,ia,n_iter,reducb,isol,id)
 
-  phib = 0
-
   do i=1,size(ia)-1
     do kij=ia(i),ia(i+1)-1
       j=ja(kij)
@@ -102,6 +100,12 @@ subroutine lin_eqns_solver_rev(a_ij,a_ijb,phi,phib,rhs,rhsb, &
     end do
   end do
 
+  phib = 0
+
+!  correction term
+!  call matvec_prod(at_ij,rhsb,ja,ia,wk(:,1))
+!  phib = phib - wk(:,1)
+  
   norm=normb
 end subroutine
 
