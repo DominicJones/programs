@@ -151,6 +151,11 @@ subroutine navierstokes ( &
   character(sl) :: out_file
   type(sfld_t) :: area
   integer,dimension(:),allocatable::bvrt_idx
+
+  character(len=256):: bnd_type
+  integer :: bnd_id
+  real(rp),dimension(4) :: bnd_value
+
   type(fson_value), pointer :: json
 
   json => fson_parse(trim(filename))
@@ -161,6 +166,12 @@ subroutine navierstokes ( &
   call fson_get(json, "Equation.Velocity.Relaxation", vel%urf)
   call fson_get(json, "Equation.Pressure.Relaxation", pp%urf)
   call fson_get(json, "Model.Navier-Stokes.Convection-Blending", vel%bl_c)
+  call fson_get(json, "Boundary.Type", bnd_type)
+  call fson_get(json, "Boundary.Index", bnd_id)
+  call fson_get(json, "Boundary.Velocity.X-Direction", bnd_value(1))
+  call fson_get(json, "Boundary.Velocity.Y-Direction", bnd_value(2))
+  call fson_get(json, "Boundary.Velocity.Z-Direction", bnd_value(3))
+  call fson_get(json, "Boundary.Velocity.Magnitude", bnd_value(4))
   call fson_destroy(json)
 
   !! initialize communications
@@ -672,19 +683,21 @@ subroutine set_boundary_conditions()
   integer :: bnd1,bndl,bndu,dmn1,dmnl,dmnu
   integer :: i,j,k,kii,kij,kji,kjj,ic,ib,ph_ty
   integer :: j1, j11, j1l, jb, jb1, jbl, jn, jnl, jj1, jjn, jj
-  character(len=256):: bnd_type
-  integer :: bnd_os, bnd_id
-  real(rp),dimension(4) :: bnd_value
-  type(fson_value), pointer :: json
+  integer :: bnd_os
 
-  json => fson_parse(trim(filename))
-  call fson_get(json, "Boundary.Type", bnd_type)
-  call fson_get(json, "Boundary.Index", bnd_id)
-  call fson_get(json, "Boundary.Velocity.X-Direction", bnd_value(1))
-  call fson_get(json, "Boundary.Velocity.Y-Direction", bnd_value(2))
-  call fson_get(json, "Boundary.Velocity.Z-Direction", bnd_value(3))
-  call fson_get(json, "Boundary.Velocity.Magnitude", bnd_value(4))
-  call fson_destroy(json)
+  ! character(len=256):: bnd_type
+  ! integer :: bnd_id
+  ! real(rp),dimension(4) :: bnd_value
+
+  ! type(fson_value), pointer :: json
+  ! json => fson_parse(trim(filename))
+  ! call fson_get(json, "Boundary.Type", bnd_type)
+  ! call fson_get(json, "Boundary.Index", bnd_id)
+  ! call fson_get(json, "Boundary.Velocity.X-Direction", bnd_value(1))
+  ! call fson_get(json, "Boundary.Velocity.Y-Direction", bnd_value(2))
+  ! call fson_get(json, "Boundary.Velocity.Z-Direction", bnd_value(3))
+  ! call fson_get(json, "Boundary.Velocity.Magnitude", bnd_value(4))
+  ! call fson_destroy(json)
 
   print "(a,i2,4g12.4)", trim(bnd_type), bnd_id, bnd_value
 

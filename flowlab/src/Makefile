@@ -6,8 +6,17 @@ target:=flowlab.exe
 lib_path:=../lib
 include ../lib/Makefile.lib
 
-f90_flags+=-O2 -cpp
-cpp_flags+=-O2
+includes+=$(JSONCPP_INC)
+includes+=$(JSONF90_INC)
+
+libraries+=$(JSONCPP_LIB)
+libraries+=$(JSONF90_LIB)
+
+f90_flags+=-O3 -cpp
+cpp_flags+=-O3
+
+# f90_flags+=-O0 -g -p -cpp
+# cpp_flags+=-O0 -g -p
 
 ifeq ($(strip $(mpi)),yes)
   f90_compiler:=$(f90_mpi_compiler)
@@ -20,6 +29,16 @@ ifeq ($(strip $(mpi)),yes)
 endif
 
 libraries+=-lgfortran
+
+# cpp_compiler:=$(GCC_HOME)/bin/g++ -std=c++14 -static-libstdc++
+# libraries+=-L$(dir $(shell gcc --print-file-name libgfortran.so))
+# libraries+=-L$(dir $(shell $(GCC_HOME)/bin/g++ --print-file-name libgfortran.so))
+# libraries+=-L$(dir $(shell gcc --print-file-name libc.so))
+# libraries+=-dynamiclib -lgfortran
+# libraries+=-static-libstdc++
+# libraries+=-static -lgfortran
+# libraries+=-static-libgfortran
+# libraries+=-static-libgcc
 
 f90_sources:=
 f90_sources+=prec_m.f90
