@@ -8,3 +8,6 @@ f90_compiler:=gfortran
 
 cpp_mpi_compiler:=mpic++
 f90_mpi_compiler:=mpif90
+
+includes:=
+libraries:=
