@@ -15,7 +15,12 @@ LIB_MAKE:=$(foreach item, $(LIB), $(MAKE) -C $(item);)
 LIB_CLEAN:=$(foreach item, $(LIB), $(MAKE) -C $(item) clean;)
 
 .PHONY: all
-all: lib-make flowlab
+all: libs flowlab
+
+clean: libs-clean flowlab-clean rm-junk
+
+libs:
+	$(LIB_MAKE)
 
 flowlab:
 	$(MAKE) -C $(src_path)
@@ -23,10 +28,7 @@ flowlab:
 flowlab-clean:
 	$(MAKE) -C $(src_path) clean
 
-lib-make:
-	$(LIB_MAKE)
-
-lib-clean:
+libs-clean:
 	$(LIB_CLEAN)
 
 rm-junk:
