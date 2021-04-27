@@ -1,0 +1,10 @@
+{
+  "Mesh" : { "File" : "cavity_2d_quad.msh", "Dimensions" : 2 },
+  "Material" : { "Density" : 100000, "Viscosity" : 1 },
+  "Solver" : { "Iteration-Limit" : 1000, "Residual-Drop" : 0.001, "Green-Gauss-Iterations" : 2, "Pressure-Correction-Iterations" : 2, "Pressure-Velocity-Scheme" : 1 },
+  "Equation" : { "Velocity" : { "Relaxation" : 0.7, "Iteration-Limit" : 10, "Residual-Drop" : 0.1 },
+                 "Pressure" : { "Relaxation" : 0.3, "Iteration-Limit" : 10, "Residual-Drop" : 0.1 } },
+  "Model" : { "Navier-Stokes" : { "Convection-Blending" : 0.7,  "Diffusion-Blending" : 0.99 } },
+  "Boundary" : { "Type" : "Wall", "Index" : 1, "Velocity" : { "X-Direction" : 1, "Y-Direction" : 0, "Z-Direction" : 0, "Magnitude" : 1  } },
+  "Output" : { "Frequency" : 25, "Pressure" : 1, "Velocity" : 1, "Speed" : 1, "Wall-Force" : 2 }
+}
