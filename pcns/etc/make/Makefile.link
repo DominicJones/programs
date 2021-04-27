@@ -1,0 +1,2 @@
+$(target): $(objects)
+	$(linker) $(linker_flags) -o $@ $^ $(libraries)

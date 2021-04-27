@@ -1,0 +1,8 @@
+lib$(target).a: $(objects)
+	ar ruv $@ $^
+	ranlib $@
+
+
+.PHONY: clean
+clean:
+	@rm -f *~ *.mod *.o *.a
